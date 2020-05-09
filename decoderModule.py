@@ -11,9 +11,10 @@ def decodes(code,advancekey):
 	decoded_list = split(code)
 
 	list_alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", 
-	"J", "K","L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+	"J", "K","L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H", "I", 
+	"J", "K","L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" ]
 	
-	list_number = ["0", "1" , "2", "3", "4", "5", "6", "7", "8", "9"]
+	list_number = ["0", "1" , "2", "3", "4", "5", "6", "7", "8", "9", "0", "1" , "2", "3", "4", "5", "6", "7", "8", "9"]
 	
 	print ("original chain: " + code)
 	
@@ -26,7 +27,13 @@ def decodes(code,advancekey):
 			index_list = list_alphabet.index(char_to_explore)
 			decode_index = index_list + int(advancekey)
 			decoded_string = decoded_string + list_alphabet[decode_index]
-		
+		if char_to_explore.isdigit():
+
+			index_list_number = list_number.index(char_to_explore)
+			decode_index_number = index_list_number + int(advancekey)
+			decoded_string = decoded_string + list_number[decode_index_number]
+
+
 		length_iterator = length_iterator + 1
 
 	print ("decoded chain: " + decoded_string)
@@ -35,7 +42,7 @@ def main():
 	
 	print ("-------- RebelAllianceDecoderModule ---------")
 	
-	inputx = input ("R2 insert the key to decode: ")
+	inputx = input ("R2 insert the key to decode: ").upper()
 	input_advance = input ("R2 insert the advance key to generate the decode result: ")
 	decodes(inputx,input_advance)
 
